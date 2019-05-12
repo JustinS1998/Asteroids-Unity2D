@@ -14,4 +14,9 @@ public class BulletController : MonoBehaviour
         rb.velocity = transform.up * speed;
         Destroy(gameObject, bulletDeleteTime);
     }
+
+    private void FixedUpdate()
+    {
+        rb.velocity = transform.up * speed;
+    }
 }
