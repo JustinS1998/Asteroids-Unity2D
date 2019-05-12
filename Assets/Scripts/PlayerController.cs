@@ -6,7 +6,10 @@ public class PlayerController : MonoBehaviour
 {
     // Start is called before the first frame update
     private Rigidbody2D rb;
-    public float speed;
+    public GameObject bullet;
+    public float speed = 1;
+    public float firingWait = 0.1f;
+    private float angle;
 
     void Start()
     {
@@ -24,12 +27,29 @@ public class PlayerController : MonoBehaviour
 
         //Rotation
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        float angle = Mathf.Atan2(mousePos.y - rb.position.y, mousePos.x - rb.position.x) * Mathf.Rad2Deg - 90;
+        angle = Mathf.Atan2(mousePos.y - rb.position.y, mousePos.x - rb.position.x) * Mathf.Rad2Deg - 90;
         rb.rotation = angle;
         //print($"Angle: {angle}, Position: {rb.position}, MousePosition: {mousePos}");
 
+    }
+
+    private void Update()
+    {
         //Firing
+        if (Input.GetMouseButtonDown(0))
+        {
+            InvokeRepeating("firing", 0f, firingWait);
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            CancelInvoke();
+        }
+    }
+        
 
-
+    void firing ()
+    {
+        GameObject newBullet = Instantiate(bullet, rb.position, Quaternion.Euler(0, 0, angle));
+        newBullet.SetActive(true);
     }
 }
