@@ -355,9 +355,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4bd2800c49814940928168807936876, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numAsteroids: 1
   asteroid: {fileID: 4156078115868049224, guid: ebec9d2162ed7bb41b227db36186c37e,
     type: 3}
+  player: {fileID: 1425642418}
   startingForce: 10
   txt: {fileID: 844492095}
 --- !u!1 &821324347

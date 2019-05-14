@@ -50,6 +50,8 @@ public class PlayerController : MonoBehaviour
     void firing ()
     {
         GameObject newBullet = Instantiate(bullet, rb.position, Quaternion.Euler(0, 0, angle));
-        newBullet.SetActive(true);
+        GameObject new1Bullet = Instantiate(bullet, rb.position, Quaternion.Euler(0, 0, angle+10));
+        GameObject new2Bullet = Instantiate(bullet, rb.position, Quaternion.Euler(0, 0, angle-10));
+        //newBullet.SetActive(true);
     }
 }
